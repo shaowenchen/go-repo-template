@@ -1,4 +1,4 @@
-module github.com/vinqi/vqchat
+module github.com/shaowenchen/go-repo-template
 
 go 1.16
 

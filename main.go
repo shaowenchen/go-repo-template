@@ -7,8 +7,8 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
+	"github.com/shaowenchen/go-repo-template/config"
 	"github.com/spf13/viper"
-	"github.com/vinqi/vqchat/mp"
 )
 
 func init() {
@@ -25,18 +25,14 @@ func init() {
 	if err != nil {
 		fmt.Sprintf("fatal error config file: %s \n", err)
 	}
-	mp.ReadConfig()
-	gin.SetMode(mp.Config.RunMode)
+	config.ReadConfig()
+	gin.SetMode(config.Config.RunMode)
 }
 
-var VERSION string = "latest"
-
 func main() {
-	go mp.BeatVqdata()
 	router := gin.Default()
-	router.POST("/", mp.Handler)
 	router.GET("/", func(context *gin.Context) {
-		context.String(200, VERSION)
+		context.String(200, "")
 	})
 	router.Run(":8000")
 }
