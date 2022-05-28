@@ -1,0 +1,8 @@
+runmode = "release"
+[mp]
+appid = ""
+appsecret = ""
+token = ""
+encodingaeskey = ""
+[mongo]
+uri = ""
