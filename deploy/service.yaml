@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-repo-template
+  labels:
+    app: go-repo-template
+spec:
+  selector:
+    app: go-repo-template
+  type: NodePort
+  ports:  
+  - name: http
+    port: 8000
+    targetPort: 8000
+    protocol: TCP

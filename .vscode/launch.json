@@ -9,10 +9,13 @@
             "type": "go",
             "request": "launch",
             "mode": "debug",
-            "program": "main.go",
+            "cwd": "${workspaceFolder}",
+            "program": "${file}",
             "args": [
-                "-c conf/dev.toml"
-            ]
+                "-c",
+                "default.toml"
+            ],
+            "env": {}
         }
     ]
 }

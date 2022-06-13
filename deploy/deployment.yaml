@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-repo-template
+spec:
+  selector:
+    matchLabels:
+      app: go-repo-template
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: go-repo-template
+    spec:
+      containers:
+      - name: go-repo-template
+        image: shaowenchen/go-repo-template:latest
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "500m"
+          limits:
+            memory: "1000Mi"
+            cpu: "1000m"
+        env:
+        - name: MY_ENV
+          value: ""
+        ports:
+        - containerPort: 8000
