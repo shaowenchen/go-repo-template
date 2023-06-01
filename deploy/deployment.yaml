@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: go-repo-template
+  namespace: default
 spec:
   selector:
     matchLabels:
@@ -27,4 +28,4 @@ spec:
         - name: MY_ENV
           value: ""
         ports:
-        - containerPort: 8000
+        - containerPort: 80

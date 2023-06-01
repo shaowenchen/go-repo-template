@@ -17,7 +17,9 @@ func main() {
 	gin.SetMode(config.Config.Gin.RunMode)
 	router := gin.Default()
 	router.GET("/", func(context *gin.Context) {
-		context.String(200, "")
+		context.JSON(200, gin.H{
+			"message": "Hello World!",
+		})
 	})
-	router.Run(":8000")
+	router.Run(":80")
 }

@@ -1,2 +1,2 @@
 [gin]
-runmode = "release"
+runmode = "debug"

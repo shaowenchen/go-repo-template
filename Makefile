@@ -18,7 +18,10 @@ binary:
 	go build -ldflags "-w -s -X main.VERSION=$(RELEASE_TAG) -X main.BUILD_DATE=$(NOW)" -o $(BIN) ./main.go
 
 image:
-	docker build -t ${IMAGE_NAME} -f ./Dockerfile . 
+	docker build -t ${IMAGE_NAME} -f ./Dockerfile .
+
+container:
+	docker run -it --rm -p 80:80 ${IMAGE_NAME}
 
 push:
 	docker push ${IMAGE_NAME}
