@@ -1,10 +1,13 @@
 VERSION         = latest
 BIN             = ./bin/app
-NOW             = $(shell date -u '+%Y%m%d%I%M%S')
-GIT_COUNT       = $(shell git rev-list --all --count)
-GIT_HASH        = $(shell git rev-parse --short HEAD)
-RELEASE_TAG     = $(VERSION).$(GIT_COUNT).$(GIT_HASH)
+BUILD_TIME      = $(shell date -u '+%Y%m%d%H%M%S')
+GIT_COMMIT      = $(shell git rev-parse --short HEAD)
 IMAGE_NAME      = shaowenchen/go-repo-template:${VERSION}
+
+define LDFLAGS
+"-X 'github.com/shaowenchen/go-repo-template/main.GitCommit=${GIT_COMMIT}' \
+-X 'github.com/shaowenchen/go-repo-template/main.BuildTime=${BUILD_TIME}'"
+endef
 
 format:
 	go fmt $(go list ./... | grep -v /vendor/)
@@ -15,7 +18,7 @@ run:
 	go run main.go -c default.toml
 
 binary:
-	go build -ldflags "-w -s -X main.VERSION=$(RELEASE_TAG) -X main.BUILD_DATE=$(NOW)" -o $(BIN) ./main.go
+	go build -ldflags ${LDFLAGS} -o $(BIN) ./main.go
 
 image:
 	docker build -t ${IMAGE_NAME} -f ./Dockerfile .
