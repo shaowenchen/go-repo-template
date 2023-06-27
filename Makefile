@@ -4,6 +4,11 @@ BUILD_TIME      = $(shell date -u '+%Y%m%d%H%M%S')
 GIT_COMMIT      = $(shell git rev-parse --short HEAD)
 IMAGE_NAME      = shaowenchen/go-repo-template:${VERSION}
 
+ifneq (,$(wildcard ./.env))
+    include .env
+    export
+endif
+
 define LDFLAGS
 "-X 'github.com/shaowenchen/go-repo-template/main.GitCommit=${GIT_COMMIT}' \
 -X 'github.com/shaowenchen/go-repo-template/main.BuildTime=${BUILD_TIME}'"
