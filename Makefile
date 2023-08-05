@@ -19,11 +19,20 @@ format:
 	go mod tidy
 	go mod vendor
 
-run:
-	go run main.go -c default.toml
+build-web:
+	cd web && yarn && yarn build
 
-binary:
-	go build -ldflags ${LDFLAGS} -o $(BIN) ./main.go
+gen:
+	go run cmd/gen/main.go
+
+table:
+	go run cmd/table/main.go
+
+run:
+	go run cmd/server/main.go -c default.toml
+
+build:
+	go build -ldflags ${LDFLAGS} -o $(BIN) cmd/server/main.go
 
 image:
 	docker build -t ${IMAGE_NAME} -f ./Dockerfile .

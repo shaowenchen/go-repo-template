@@ -17,3 +17,6 @@ bin/
 .idea/
 .env
 __*
+
+web/node_modules/
+web/dist/

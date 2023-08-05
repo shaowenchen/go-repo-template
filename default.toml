@@ -1,2 +1,7 @@
-[gin]
+[server]
 runmode = "debug"
+[db]
+user = ""
+password = ""
+addr = ""
+name = ""
