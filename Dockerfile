@@ -1,10 +1,10 @@
-FROM hubimage/builder-golang:1.19 AS builder
+FROM hubimage/builder-golang:1.19 as builder
 RUN mkdir -p /builder
 WORKDIR /builder
 COPY . .
 RUN make build
 
-FROM hubimage/builder-node:18.17 AS web
+FROM hubimage/builder-node:18.17 as web
 RUN mkdir -p /builder
 WORKDIR /builder
 COPY . .
