@@ -15,7 +15,7 @@ define LDFLAGS
 endef
 
 format:
-	go fmt $(go list ./... | grep -v /vendor/)
+	go fmt $(shell go list ./... | grep -v /vendor/)
 	go mod tidy
 	go mod vendor
 

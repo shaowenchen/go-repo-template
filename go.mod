@@ -5,6 +5,10 @@ go 1.19
 require (
 	github.com/gin-gonic/gin v1.9.1
 	github.com/spf13/viper v1.16.0
+	gorm.io/driver/mysql v1.5.1-0.20230509030346-3715c134c25b
+	gorm.io/gen v0.3.23
+	gorm.io/gorm v1.25.1-0.20230505075827-e61b98d69677
+	gorm.io/plugin/dbresolver v1.3.0
 )
 
 require (
@@ -50,9 +54,5 @@ require (
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	gorm.io/datatypes v1.1.1-0.20230130040222-c43177d3cf8c // indirect
-	gorm.io/driver/mysql v1.5.1-0.20230509030346-3715c134c25b // indirect
-	gorm.io/gen v0.3.23 // indirect
-	gorm.io/gorm v1.25.1-0.20230505075827-e61b98d69677 // indirect
 	gorm.io/hints v1.1.0 // indirect
-	gorm.io/plugin/dbresolver v1.3.0 // indirect
 )
