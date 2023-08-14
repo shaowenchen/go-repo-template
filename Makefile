@@ -38,7 +38,7 @@ image:
 	docker build -t ${IMAGE_NAME} -f ./Dockerfile .
 
 container:
-	docker run -it --rm -p 80:80 ${IMAGE_NAME}
+	docker run -it --rm -p 80:80 --env-file .env ${IMAGE_NAME}
 
 push:
 	docker push ${IMAGE_NAME}

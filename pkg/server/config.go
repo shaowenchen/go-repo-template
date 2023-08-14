@@ -27,7 +27,7 @@ type ServerOptions struct {
 	RunMode string
 }
 
-func initViper(configPath string) {
+func LoadConfig(configPath string) {
 	path, err := os.Getwd()
 	if err != nil {
 		panic(err)
@@ -46,20 +46,12 @@ func initViper(configPath string) {
 	if err != nil {
 		fmt.Printf("fatal error config file: %s \n", err)
 	}
+	err = viper.Unmarshal(GlobalConfig)
+	if err != nil {
+		fmt.Printf("unable to decode into struct, %v \n", err)
+	}
 }
 
-func InitGlobalConfig(configPath string) *ConfigOptions {
-	initViper(configPath)
-	viper.SetDefault("server.runmode", "debug")
-	GlobalConfig.Server.RunMode = viper.GetString("server.runmode")
-	GlobalConfig.DB.User = viper.GetString("db.user")
-	GlobalConfig.DB.Password = viper.GetString("db.password")
-	GlobalConfig.DB.Addr = viper.GetString("db.addr")
-	GlobalConfig.DB.Name = viper.GetString("db.name")
-	return GlobalConfig
-}
-
-func InitGlobalDao() (err error) {
-	GlobalDB, err = dao.InitDBConnect(GlobalConfig.DB)
-	return
+func BuildGlobalDao() (*gorm.DB, error) {
+	return dao.InitDBConnect(GlobalConfig.DB)
 }
