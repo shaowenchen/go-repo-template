@@ -10,7 +10,7 @@ import (
 func init() {
 	configpath := flag.String("c", "", "")
 	flag.Parse()
-	server.InitGlobalConfig(*configpath)
+	server.LoadConfig(*configpath)
 }
 
 func main() {

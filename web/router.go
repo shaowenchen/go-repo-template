@@ -5,11 +5,11 @@ import (
 	"net/http"
 )
 
-func SetupRoutes(r *gin.Engine) {
+func SetupRouter(r *gin.Engine) {
 	r.StaticFile("/favicon.ico", "./web/dist/favicon.ico")
 	r.StaticFile("/logo.png", "./web/dist/logo.png")
 	r.Static("/assets", "./web/dist/assets")
-	r.LoadHTMLGlob("./web/dist/*.html")
+	r.LoadHTMLFiles("./web/dist/*.html")
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{})
 	})
