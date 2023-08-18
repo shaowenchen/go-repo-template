@@ -53,5 +53,6 @@ func LoadConfig(configPath string) {
 }
 
 func BuildGlobalDao() (*gorm.DB, error) {
-	return dao.InitDBConnect(GlobalConfig.DB)
+	GlobalDB, err := dao.InitDBConnect(GlobalConfig.DB)
+	return GlobalDB, err
 }
