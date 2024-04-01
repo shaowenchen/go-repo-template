@@ -5,3 +5,5 @@ user = ""
 password = ""
 addr = ""
 name = ""
+port = 3306
+chartset "utf8mb4"

@@ -12,12 +12,14 @@ type DBOptions struct {
 	Password string
 	Addr     string
 	Name     string
+	Port     int
+	CharSet  string
 }
 
 func InitDBConnect(option DBOptions) (*gorm.DB, error) {
 	var dsn = fmt.Sprintf(
-		"%s:%s@tcp(%s)/%s?charset=utf8mb4&parseTime=True&loc=Local&tls=true",
-		option.User, option.Password, option.Addr, option.Name,
+		"%s:%s@tcp(%s:%d)/%s?charset=%s&parseTime=True&loc=Local&tls=true",
+		option.User, option.Password, option.Addr, option.Port, option.Name, option.CharSet,
 	)
 	return gorm.Open(mysql.New(mysql.Config{
 		DSN: dsn,
