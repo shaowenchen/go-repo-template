@@ -19,4 +19,3 @@ bin/
 __*
 
 web/node_modules/
-web/dist/
