@@ -1,4 +1,4 @@
-FROM hubimage/builder-golang:1.19 AS builder
+FROM hubimage/builder-golang:1.21 AS builder
 COPY . .
 RUN make build
 
