@@ -14,6 +14,9 @@ define LDFLAGS
 -X 'github.com/shaowenchen/go-repo-template/main.BuildTime=${BUILD_TIME}'"
 endef
 
+doc:
+	swag init -g ./cmd/server/main.go -o docs
+
 format:
 	go fmt $(shell go list ./... | grep -v /vendor/)
 	go mod tidy

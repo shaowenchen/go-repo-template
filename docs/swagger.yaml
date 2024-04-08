@@ -1,0 +1,16 @@
+info:
+  contact: {}
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Get
+      tags:
+      - Test
+swagger: "2.0"

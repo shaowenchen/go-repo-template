@@ -12,6 +12,12 @@ func Version(c *gin.Context) {
 	return
 }
 
+// @Summary Get
+// @Tags Test
+// @Accept json
+// @Produce json
+// @Success 200
+// @Router / [get]
 func Get(c *gin.Context) {
 	ShowSuccess(c, "get, but not auth")
 }
