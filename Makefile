@@ -17,7 +17,7 @@ endef
 swagger-docs:
 	if ! command -v swag &> /dev/null; then \
 		echo "swag installing"; \
-		GONOSUMDB=github.com/swaggo/* go install github.com/swaggo/swag/cmd/swag; \
+		go get -u github.com/swaggo/swag/cmd/swag; \
 	else \
 		echo "swag installed"; \
 	fi; \
