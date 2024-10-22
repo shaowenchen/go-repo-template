@@ -15,12 +15,6 @@ define LDFLAGS
 endef
 
 swagger-docs:
-	if ! command -v swag &> /dev/null; then \
-		echo "swag installing"; \
-		go get -u github.com/swaggo/swag/cmd/swag; \
-	else \
-		echo "swag installed"; \
-	fi; \
 	swag init --parseDependency --parseInternal -g ./cmd/server/main.go -o swagger
 
 format:
