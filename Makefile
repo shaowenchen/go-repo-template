@@ -14,8 +14,14 @@ define LDFLAGS
 -X 'github.com/shaowenchen/go-repo-template/main.BuildTime=${BUILD_TIME}'"
 endef
 
-doc:
-	swag init -g ./cmd/server/main.go -o docs
+swagger-docs:
+	if ! command -v swag &> /dev/null; then \
+		echo "swag installing"; \
+		GONOSUMDB=github.com/swaggo/* go install github.com/swaggo/swag/cmd/swag; \
+	else \
+		echo "swag installed"; \
+	fi; \
+	swag init --parseDependency --parseInternal -g ./cmd/server/main.go -o swagger
 
 format:
 	go fmt $(shell go list ./... | grep -v /vendor/)
@@ -34,7 +40,7 @@ table:
 run:
 	go run cmd/server/main.go -c default.toml
 
-build:
+build: swagger-docs
 	go build -ldflags ${LDFLAGS} -o $(BIN) cmd/server/main.go
 
 image:

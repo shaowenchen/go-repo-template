@@ -6,9 +6,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/shaowenchen/go-repo-template/pkg/server"
 	"github.com/shaowenchen/go-repo-template/web"
-	swaggerfiles "github.com/swaggo/files"
-	ginSwagger "github.com/swaggo/gin-swagger"
-	_ "github.com/shaowenchen/go-repo-template/docs"
 	"net/http"
 	_ "net/http/pprof"
 )
@@ -29,7 +26,6 @@ func main() {
 	server.SetupV1Router(r)
 	server.SetupV1AuthRouter(r)
 	setupPprof()
-	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 	r.Run(":80")
 }
 

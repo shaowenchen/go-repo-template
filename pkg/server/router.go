@@ -2,6 +2,9 @@ package server
 
 import (
 	"github.com/gin-gonic/gin"
+	_ "github.com/shaowenchen/go-repo-template/swagger"
+	swaggerfiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func SetupV1Router(r *gin.Engine) {
@@ -9,6 +12,7 @@ func SetupV1Router(r *gin.Engine) {
 	{
 		v1.GET("", Get)
 		v1.GET("/version", Version)
+		v1.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 	}
 }
 
